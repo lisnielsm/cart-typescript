@@ -49,9 +49,19 @@
   font-weight: 400;
 }
 
+.h4-3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
 .h5 {
   font-size: 14px;
   font-weight: 600;
+}
+
+.h5-2 {
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .h6 {

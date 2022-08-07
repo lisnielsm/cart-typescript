@@ -16,3 +16,11 @@ export interface Order {
 	numberItems: number;
 	total: number;
 }
+
+export interface LikeProd {
+	img: string,
+	name: string;
+	minPrice: number;
+	maxPrice: number;
+	minQuantity: number;
+}
