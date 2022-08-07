@@ -158,7 +158,6 @@ const Header: React.FC = () => {
 						variant="contained"
 						onClick={() => {}}
 						size="large"
-						// className="logo"
 						sx={{
 							height: "48px",
 							maxWidth: "172px",
