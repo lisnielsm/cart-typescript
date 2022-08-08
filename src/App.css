@@ -1,3 +1,15 @@
+.logo {
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  height          : 48px;
+  width           : 172px;
+  background-color: #CED0D3;
+  color           : #848A92;
+  font-family     : 'Open Sans', sans-serif;
+  font-size       : 13px;
+}
+
 .tab-option:first-child {
   margin-left: -16px;
 }
@@ -12,65 +24,73 @@
 }
 
 .h1 {
-  font-size: 24px;
+  font-size  : 24px;
   font-weight: 700;
 }
 
 .subtitle {
-  font-size: 18px;
+  font-size  : 18px;
   font-weight: 400;
 }
 
 .subtitle2 {
-  font-size: 14px;
+  font-size  : 14px;
   font-weight: 600;
-  color: #6B737C;
+  color      : #6B737C;
 }
 
 .h2 {
-  font-size: 18px;
-  font-weight: 700;
+  font-size    : 18px;
+  font-weight  : 700;
   margin-bottom: 12px;
 }
 
 .h3 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size    : 18px;
+  font-weight  : 600;
   margin-bottom: 16px;
+  margin-top   : 0;
 }
 
 .h4 {
-  font-size: 16px !important;
+  font-size  : 16px !important;
   font-weight: 700 !important;
 }
 
 .h4-2 {
-  font-size: 16px;
+  font-size  : 16px;
   font-weight: 400;
 }
 
 .h4-3 {
-  font-size: 15px;
+  font-size  : 15px;
   font-weight: 600;
 }
 
+.h4-4 {
+  font-size    : 15px;
+  font-weight  : 400;
+  margin-bottom: 24px;
+}
+
 .h5 {
-  font-size: 14px;
+  font-size  : 14px;
   font-weight: 600;
 }
 
 .h5-2 {
-  font-size: 14px;
+  font-size  : 14px;
   font-weight: 400;
+  margin-top : 0;
 }
 
 .h6 {
-  font-size: 12px;
+  font-size  : 12px;
   font-weight: 600;
 }
 
 .h7 {
-  font-size: 10px;
+  font-size  : 10px;
   font-weight: 600;
 }
 
@@ -82,26 +102,38 @@
   border: 2px solid #091625 !important;
 }
 
+.footer-links {
+  font-size      : 15px;
+  font-weight    : 400;
+  margin-bottom  : 24px;
+  text-decoration: none;
+  color          : #3A4451;
+}
+
 @media (min-width: 993px) {
   .custom-container {
-    padding: 0 92px !important;
+    padding-left : 92px !important;
+    padding-right: 92px !important;
   }
 }
 
 @media (max-width: 992px) {
   .custom-container {
-    padding: 0 64px !important;
+    padding-left : 64px !important;
+    padding-right: 64px !important;
   }
 }
 
 @media (max-width: 768px) {
   .custom-container {
-    padding: 0 48px !important;
+    padding-left : 48px !important;
+    padding-right: 48px !important;
   }
 }
 
 @media (max-width: 552px) {
   .custom-container {
-    padding: 0 24px !important;
+    padding-left : 24px !important;
+    padding-right: 24px !important;
   }
 }

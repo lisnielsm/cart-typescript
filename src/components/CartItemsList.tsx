@@ -5,7 +5,7 @@ import { Item } from "../interfaces";
 import CartItem from "./CartItem";
 import OrderSummary from "./OrderSummary";
 
-const items = [
+const items:Item[] = [
 	{
 		id: 1,
 		name: "My Christmas pack",
@@ -63,37 +63,46 @@ const items = [
 ];
 
 const CartItemsList: React.FC = () => {
+	const [cartItems, setCartItems] = React.useState<Item[]>([]);
+
+	React.useEffect(() => {
+		// simulate an API call
+		setCartItems(items);
+	}, [])
+
 	const getTotalPrice = (total: number, currentValue: Item): number => {
 		return total + currentValue.price * currentValue.quantity;
 	};
 
+	const deleteCartItem = (id:number) => {
+		setCartItems(cartItems.filter(item => item.id !== id));
+	}
+
 	return (
 		<Box className="custom-container" sx={{ marginTop: "32px" }}>
-			<Grid container spacing={3}>
-				<Grid item xs={12} md={8}>
-					<p className="h1" style={{ marginBottom: "40px" }}>
+			<Grid container>
+				<Grid item xs={12} md={8} sx={{paddingRight: "24px"}}>
+					<p className="h1" style={{ marginBottom: "40px", marginTop: "0" }}>
 						Your Cart{" "}
 						<span className="subtitle">
-							{"(" + items.length + ")"}
+							{"(" + cartItems.length + ")"}
 						</span>
 					</p>
 
-					{items.map((item) => (
+					{cartItems.map((item) => (
 						<CartItem
 							key={item.id}
-							name={item.name}
-							image={item.image}
-							quantity={item.quantity}
-							price={item.price}
-							isPack={item.isPack}
-							packDescription={item.packDescription}
+							item={item}
+							items={cartItems}
+							setCartItems={setCartItems}
+							deleteCartItem={deleteCartItem}
 						></CartItem>
 					))}
 				</Grid>
 				<Grid item xs={12} md={4}>
 					<OrderSummary
-						numberItems={items.length}
-						total={items.reduce(getTotalPrice, 0)}
+						numberItems={cartItems.length}
+						total={cartItems.reduce(getTotalPrice, 0)}
 					/>
 				</Grid>
 			</Grid>

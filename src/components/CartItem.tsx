@@ -1,11 +1,39 @@
 import * as React from "react";
-import { Box, Button } from "@mui/material";
+import { Box, Button, TextField, MenuItem } from "@mui/material";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
 import { Item } from "../interfaces";
 
-const CartItem: React.FC<Item> = (props) => {
-	const { name, image, quantity, price, isPack, packDescription } = props;
+interface ICartItemProps {
+	item: Item;
+	items: Item[];
+	setCartItems: React.Dispatch<React.SetStateAction<Item[]>>;
+	deleteCartItem: (id: number) => void;
+}
+
+const CartItem: React.FC<ICartItemProps> = (props) => {
+	const { id, name, image, quantity, price, isPack, packDescription } =
+		props.item;
+	const { items, setCartItems, deleteCartItem } = props;
+
+	const [qty, setQty] = React.useState<string>(quantity.toString());
+
+	const handleQuantityChange = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		setQty(event.target.value);
+		setCartItems(
+			items.map((item) =>
+				item.id === id
+					? { ...item, quantity: Number(event.target.value) }
+					: item
+			)
+		);
+	};
+
+	const handleDeleteItem = () => {
+		deleteCartItem(id);
+	};
 
 	return (
 		<Box
@@ -63,11 +91,53 @@ const CartItem: React.FC<Item> = (props) => {
 				}}
 			>
 				<span className="h2">{name}</span>
-				<span className="h3">Quantity: {quantity}</span>
+
+				<Box sx={{ display: "flex", flexWrap: "nowrap" }}>
+					<span className="h3">Quantity:</span>
+					<TextField
+						className="select-arrow"
+						select
+						value={qty}
+						onChange={handleQuantityChange}
+						variant="standard"
+						sx={{ marginLeft: "8px" }}
+					>
+						{[
+							"5",
+							"10",
+							"15",
+							"20",
+							"25",
+							"30",
+							"35",
+							"40",
+							"45",
+							"50",
+							"60",
+							"70",
+							"80",
+							"90",
+							"100",
+						].map((cant) => (
+							<MenuItem value={cant} key={cant}>
+								<Box sx={{ display: "flex" }}>
+									<span
+										className="h4"
+										style={{
+											marginBottom: "0",
+										}}
+									>
+										{cant}
+									</span>
+								</Box>
+							</MenuItem>
+						))}
+					</TextField>
+				</Box>
 
 				{isPack ? (
 					<>
-						<ul>
+						<ul style={{ marginTop: "0" }}>
 							{packDescription?.map((description) => (
 								<li className="h5" key={description.name}>
 									{description.name}{" "}
@@ -91,6 +161,7 @@ const CartItem: React.FC<Item> = (props) => {
 							<span className="h6">|</span>
 							<Button
 								className="h6"
+								onClick={handleDeleteItem}
 								sx={{
 									color: "#091625",
 									textTransform: "none",
@@ -107,6 +178,7 @@ const CartItem: React.FC<Item> = (props) => {
 								sx={{ width: 16, height: 16 }}
 							/>
 						}
+						onClick={handleDeleteItem}
 						sx={{
 							color: "#091625",
 							textTransform: "none",
@@ -138,14 +210,17 @@ const CartItem: React.FC<Item> = (props) => {
 						minimumFractionDigits: 2,
 					}).format(price)}
 				</span>
-				<p className="h3" style={{ textAlign: "right", marginBottom: "0" }}>
+				<p
+					className="h3"
+					style={{ textAlign: "right", marginBottom: "0" }}
+				>
 					Total:{" "}
 					<span className="h2">
 						$
 						{new Intl.NumberFormat("en-US", {
 							style: "decimal",
 							minimumFractionDigits: 2,
-						}).format(quantity * price)}
+						}).format(Number(qty) * price)}
 					</span>
 				</p>
 			</Box>

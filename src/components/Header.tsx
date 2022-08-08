@@ -154,25 +154,9 @@ const Header: React.FC = () => {
 						paddingRight: "0 !important",
 					}}
 				>
-					<Button
-						variant="contained"
-						onClick={() => {}}
-						size="large"
-						sx={{
-							height: "48px",
-							maxWidth: "172px",
-							minWidth: "120px",
-							width: "100%",
-							backgroundColor: "#CED0D3",
-							color: "#848A92",
-							fontFamily: "'Open Sans', sans-serif",
-							fontSize: "13px",
-							lineHeight: "16px",
-							borderRadius: 0,
-						}}
-					>
-						Logo
-					</Button>
+					<div onClick={() => {}} className="logo">
+						<span>LOGO</span>
+					</div>
 
 					<Search sx={{ display: { xs: "none", sm: "block" } }}>
 						<SearchIconWrapper>

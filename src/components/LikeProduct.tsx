@@ -12,7 +12,6 @@ const LikeProduct: React.FC<LikeProd> = (props) => {
 				display: "flex",
 				flexDirection: "column",
 				marginRight: "24px",
-				marginBottom: "120px",
 			}}
 		>
 			<div
@@ -42,7 +41,7 @@ const LikeProduct: React.FC<LikeProd> = (props) => {
 					<span className="h4-3">{`$${minPrice} - $${maxPrice}`}</span>
 				</Grid>
 				<Grid item xs={6}>
-					<p className="h5-2">
+					<p className="h5-2" style={{ marginBottom: 0 }}>
 						Minimum: <span className="h4-3">{minQuantity}</span>
 					</p>
 				</Grid>

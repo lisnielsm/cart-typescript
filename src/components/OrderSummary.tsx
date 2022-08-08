@@ -37,7 +37,9 @@ const OrderSummary: React.FC<Order> = (props) => {
 					marginBottom: "32px",
 				}}
 			>
-				<span className="h3">Total:</span>
+				<span className="h3" style={{ marginBottom: "0" }}>
+					Total:
+				</span>
 				<span className="h1">
 					$
 					{new Intl.NumberFormat("en-US", {
@@ -47,27 +49,29 @@ const OrderSummary: React.FC<Order> = (props) => {
 				</span>
 			</Box>
 
-			<Button
-				variant="contained"
-				onClick={() => {}}
-				size="large"
-				className="proceed-button h4"
-				sx={{
-					height: "48px",
-					width: "100%",
-					backgroundColor: "#3A4451",
-					color: "#FFF",
-					fontFamily: "'Open Sans', sans-serif",
-					padding: "12px 24px",
-					borderRadius: "8px",
-                    textTransform: "none",
-                    marginBottom: "12px"
-				}}
-			>
-				Proceed to Checkout
-			</Button>
+			{numberItems !== 0 ? (
+				<Button
+					variant="contained"
+					onClick={() => {}}
+					size="large"
+					className="proceed-button h4"
+					sx={{
+						height: "48px",
+						width: "100%",
+						backgroundColor: "#3A4451",
+						color: "#FFF",
+						fontFamily: "'Open Sans', sans-serif",
+						padding: "12px 24px",
+						borderRadius: "8px",
+						textTransform: "none",
+						marginBottom: "12px",
+					}}
+				>
+					Proceed to Checkout
+				</Button>
+			) : null}
 
-            <Button
+			<Button
 				variant="outlined"
 				onClick={() => {}}
 				size="large"
@@ -80,9 +84,9 @@ const OrderSummary: React.FC<Order> = (props) => {
 					fontFamily: "'Open Sans', sans-serif",
 					padding: "12px 24px",
 					borderRadius: "8px",
-                    textTransform: "none",
-                    marginBottom: "12px",
-                    border: "2px solid #091625"
+					textTransform: "none",
+					marginBottom: "12px",
+					border: "2px solid #091625",
 				}}
 			>
 				Continue shopping

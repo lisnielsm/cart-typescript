@@ -4,6 +4,7 @@ export interface ItemDescription {
 }
 
 export interface Item {
+	id: number;
 	name: string;
 	image: any;
 	quantity: number;
@@ -18,7 +19,7 @@ export interface Order {
 }
 
 export interface LikeProd {
-	img: string,
+	img: string;
 	name: string;
 	minPrice: number;
 	maxPrice: number;
